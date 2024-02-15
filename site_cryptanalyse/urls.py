@@ -16,8 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import settings
+
+import blog
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', include("blog.urls")),
+    path("red/", include("mini_url.urls")),
+    path("login/", blog.views.connexion, name="connexion"),
+    path("logout/", blog.views.deconnexion, name="deconnexion"),
+    path("profile/", blog.views.see_private_profile, name="private_profile"),
+    path("profile/<username>/", blog.views.see_profile, name="profile")
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% if url_saved %}<p>Votre url a bien été sauvegardée !</p>{% endif %}
+<form action="{% url "mini_url.create_url" %}" method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Valider" />
+</form>
+{% endblock content %}

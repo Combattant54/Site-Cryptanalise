@@ -1,0 +1,23 @@
+{% extends "profile.html" %}
+{% load obfuscation %}
+
+
+{% block private_informations %}
+<ul class="show_informations">
+    <li>
+        <h4>Adresse mail: </h4>
+        <p>{{ user.email|obfuscate_mail }}</p>
+    </li>
+    <li>
+        <h4>Vos articles sauvegardés: </h4>
+        <ul>
+            {% for article in profile.liked_articles.all %}
+            <li><a href="{% url "blog.views.article" article.id %}">{{article.title}}</a></li>
+            {% empty %}
+            <p>Vous n'avez pas encore sauvegardé d'article.</p>    
+            {% endfor %}
+                
+        </ul>
+    </li>
+</ul>
+{% endblock private_informations %}

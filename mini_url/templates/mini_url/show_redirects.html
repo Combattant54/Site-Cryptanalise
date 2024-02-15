@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p>Liste des url raccourcis :</p>
+<ul>
+    {% for link, absolute_link in links %}
+    <li> {{link.long_url}} via <a href="{{ absolute_link }}">{{ absolute_link }}</a> {% if link.creator != "" %}par {{link.creator}} {% endif %}({{link.access_amount}} accès) </li>
+    {% endfor %}
+</ul>
+{% endblock content %}

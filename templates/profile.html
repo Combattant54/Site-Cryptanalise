@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+    {% block public_informations %}
+    <div class="top_informations;profile">
+        {% if profile.profile_image %}<img src="{{ profile.profile_image.path }}" alt="L'avatar de {{user.username}}">{% endif %}
+        
+        <h2>Profile de {{user.username}}</h2>
+    </div>
+    <p>Articles :</p>
+    <ul>
+        {% for article in articles %}
+            <li>
+                <p><a href="{% url "blog.views.article" article.id %}">{{ article.title }}</a> le {{ article.creation_date }}</p>
+            </li>
+        {% empty %}
+            <p>Aucun article n'a été posté</p>
+        {% endfor %}
+            
+    </ul>
+
+    {% endblock public_informations %}
+
+    {% block private_informations %}{% endblock private_informations %}
+{% endblock content %}
