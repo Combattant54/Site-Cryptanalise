@@ -2,7 +2,19 @@
 {% load field_op %}
 
 {% block content %}
-    <h1>{{ article.title }} <span class="small">dans {{ article.categories.all|field_join:'name'}}</span></h1>
+<div>
+    <h1 id="article-title">
+        <span class="title-display">{{ article.title }}</span>
+        <span class="small">dans </span>
+        <span class="medium categories-display">
+            {% for category in article.categories.all %}
+            <a href="{% url "blog.views.category" category.id category.slug %}">{{ category.name }} </a>
+            {% empty %}
+            aucune catégorie.
+            {% endfor %}
+        </span>
+    </h1>
     <p class="infos">Rédigé par {{ article.autor.user }}, le {{ article.date_creation|date:"DATE_FORMAT" }}</p>
-    <div class="contenu">{{ article.content|linebreaks }}</div>
+</div>
+<div class="contenu">{{ article.content|linebreaks }}</div>
 {% endblock content %}

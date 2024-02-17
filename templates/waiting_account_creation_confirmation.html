@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% load obfuscation %}
+
+{% block content %}
+<h1>En attente de votre confirmation par mail</h1>
+<h3>Mail envoyé a {{ request.user.email|obfuscatemail }}</h3>
+
+{% endblock content %}

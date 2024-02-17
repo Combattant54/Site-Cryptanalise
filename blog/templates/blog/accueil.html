@@ -2,8 +2,12 @@
 
 
 {% block content %}
-    <h1>Bienvenue sur le blog des crêpes bretonnes !</h1>
-    {% for article in derniers_articles %}
+    
+    {% block content_header %}
+    <h1>Bienvenue sur le blog de cryptanalitica !</h1>
+    {% endblock content_header %}
+
+    {% for article in articles %}
         <div class="article">
             <h3>{{ article.title }}</h3>
             <p>{{ article.content|truncatewords_html:80 }}</p>

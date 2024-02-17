@@ -1,0 +1,42 @@
+/* STYLE */ 
+
+a.nav-link:hover {
+    font-weight: 110%;
+}
+
+.nav-right{
+    text-align: right;
+}
+
+#content {
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+#article-title {
+    & span.title-display {
+        text-decoration-line: underline;
+    }
+    & span.small {
+        font-style: italic;
+        font-size: 40%;
+        text-decoration: none;
+    }
+    & span.categories-display{
+        text-decoration: none;
+        font-style: italic;
+        & a {
+            font-size: 60%;
+            color: orange;
+        }
+    }
+    & span.categories-display > a:hover{
+        text-decoration: none;
+        font-size: 70%;
+        color:orangered;
+    }
+}
+
+div.nowrap-title {
+    white-space: nowrap;
+}
